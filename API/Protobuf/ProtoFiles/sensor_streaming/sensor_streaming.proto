@@ -80,3 +80,19 @@ message RadarStreamingRequest {
 message RadarStreamingResponse {
     bool success = 1;
 }
+
+//ADDING BUOY DATA STREAMING
+message BuoyStreamingRequest {
+    double timeInSeconds = 1;
+    uint32 count = 2;
+    repeated float distances = 3;
+}
+
+message BuoyStreamingResponse {
+    bool success = 1;
+}
+
+service SensorStreaming {
+    rpc StreamBuoySensor(BuoyStreamingRequest) returns (BuoyStreamingResponse) {}
+}
+
